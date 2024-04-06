@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/main.html :: head}">
+</head>
+<body>
+
+    <section class="container p-5">
+        <h1 class="mb-2">Gerenciar Quartos</h1>
+        <a th:href = "@{/quartos/cadastrar}" class="btn btn-primary mb-5">Cadastrar Quarto</a>
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+                <th>Nº</th>
+                <th>Descrição</th>
+                <th>Capacidade</th>
+                <th>Tipo</th>
+                <th>Disponibilidade</th>
+                <th>Preço /Noite</th>
+                <th>Limpeza</th>
+                <th>Ações</th>
+            </thead>
+            <tbody>
+                <tr th:each="quarto : ${quartos}">
+                    <td th:text = "${quarto.numero}"></td>
+                    <td th:text = "${quarto.descricao}"></td>
+                    <td th:text = "${quarto.capacidade}"></td>
+                    <td th:text = "${quarto.tipo}"></td>
+                    <td>
+                        <span th:if = "${quarto.disponibilidade == true}">Disponível</span>
+                        <span th:if = "${quarto.disponibilidade == false}">IndispoNível</span>
+                    </td>
+                    <td th:text = "${quarto.preco}"></td>
+                    <td>
+                        <span th:if = "${quarto.limpeza == true}">SIM</span>
+                        <span th:if = "${quarto.limpeza == false}">NÃO</span>
+                    </td>
+                    <td class="d-flex gap-2">
+                        <a th:href = "@{ /quartos/editar/{id} (id=${quarto.id}) }" class="btn btn-sm btn-outline-primary">Editar</a>
+
+                        <form th:action = "@{ /quartos/excluir }" method="POST">
+                            <input type="hidden" name="id" th:value="${quarto.id}" />
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+</body>
+</html>

@@ -12,28 +12,28 @@ public class Quarto {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @Column
-    private int numero;
+    private Integer numero;
 
     @Column
     private String descricao;
 
     @Column
-    private int capacidade;
+    private Integer capacidade;
 
     @Column
     private String tipo;
 
     @Column
-    private boolean disponibilidade = true;
+    private Boolean disponibilidade = true;
 
     @Column
-    private float preco;
+    private Float preco;
 
     @Column
-    private boolean limpeza = true;
+    private Boolean limpeza = true;
 
 
 }

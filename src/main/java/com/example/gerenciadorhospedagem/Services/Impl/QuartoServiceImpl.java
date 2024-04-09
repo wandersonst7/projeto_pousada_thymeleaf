@@ -1,13 +1,14 @@
-package com.example.gerenciadorhospedagem.Services;
+package com.example.gerenciadorhospedagem.Services.Impl;
 
 import com.example.gerenciadorhospedagem.Models.Quarto;
 import com.example.gerenciadorhospedagem.Repositories.QuartoRepository;
+import com.example.gerenciadorhospedagem.Services.QuartoService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class QuartoServiceImpl implements QuartoService{
+public class QuartoServiceImpl implements QuartoService {
 
     private final QuartoRepository quartoRepository;
 

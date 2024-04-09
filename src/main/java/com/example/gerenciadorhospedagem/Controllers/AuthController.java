@@ -21,7 +21,7 @@ public class AuthController {
     @GetMapping
     public String home(Model model){
         model.addAttribute("pageTitle", "Bem-vindo");
-        return "fragments/main";
+        return "home";
     }
 
 }

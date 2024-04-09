@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/main.html :: head}"></head>
+<body>
+    <nav th:replace="~{fragments/main.html :: nav}"></nav>
+
+    <main class="container p-5" style="min-height: 100vh;">
+        <h1 class="mb-2">Gerenciar Funcionários</h1>
+        <a th:href="@{/funcionarios/cadastrar}" class="btn btn-primary mb-5">Cadastrar Funcionário</a>
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+                <th>Nome Completo</th>
+                <th>Nome do Usuário</th>
+                <th>Salário</th>
+                <th>CPF</th>
+                <th>Data da Contratação</th>
+                <th>Ações</th>
+            </thead>
+            <tbody>
+                <tr th:each="funcionario : ${funcionarios}">
+                    <td th:text="${funcionario.nome_completo}"></td>
+                    <td th:text="${funcionario.nome_usuario}"></td>
+                    <td th:text="${funcionario.salario}"></td>
+                    <td th:text="${funcionario.cpf}"></td>
+                    <td th:text="${funcionario.data_contratacao}"></td>
+                    <td class="d-flex gap-2">
+                        <a th:href="@{ /funcionarios/editar/{id} (id=${funcionario.id_func})}" class="btn btn-sm btn-outline-primary">Editar</a>
+
+                        <form th:action="@{/funcionarios/excluir}" method="POST">
+                            <input type="hidden" name="id" th:value="${funcionario.id_func}">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer th:replace="~{fragments/main.html :: footer}"></footer>
+</body>
+</html>

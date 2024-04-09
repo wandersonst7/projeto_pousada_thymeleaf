@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{ fragments/main.html :: head}"></head>
+<body>
+  <nav th:replace="~{ fragments/main.html :: nav}"></nav>
+
+  <main class="container p-5" style="min-height: 100vh;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+          <h1 class="text-center pt-3">Cadastrar Funcionário</h1>
+          <div class="card-body">
+            <form th:action = "@{/funcionarios}" th:object="${funcionario}" method="POST">
+
+              <div class="form-group mb-3">
+                <label for="nome_completo">Nome Completo: </label>
+                <input type="text"
+                       id="nome_completo"
+                       th:field = "*{nome_completo}"
+                       placeholder="Digite o nome completo"
+                       class="form-control">
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="nome_usuario">Nome de usuário: </label>
+                <input type="text"
+                       id="nome_usuario"
+                       th:field = "*{nome_usuario}"
+                       placeholder="Digite o nome de usuário"
+                       class="form-control">
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="senha">Senha: </label>
+                <input type="password"
+                       id="senha"
+                       th:field = "*{senha}"
+                       placeholder="Crie uma senha"
+                       class="form-control">
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="salario">Salário: </label>
+                <input type="text"
+                       id="salario"
+                       th:field = "*{salario}"
+                       placeholder="Informe o salário"
+                       class="form-control">
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="cpf">CPF: </label>
+                <input type="text"
+                       id="cpf"
+                       th:field = "*{cpf}"
+                       placeholder="CPF do funcionário"
+                       class="form-control">
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="data_contratacao">Data de Contratação: </label>
+                <input type="date"
+                       id="data_contratacao"
+                       th:field = "*{data_contratacao}"
+                       class="form-control">
+              </div>
+
+              <div class="d-flex align-items-start column-gap-3 pb-3">
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <a th:href = "@{/funcionarios}" class="btn btn-outline-secondary">Voltar</a>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer th:replace="~{ fragments/main.html :: footer}"></footer>
+</body>
+</html>

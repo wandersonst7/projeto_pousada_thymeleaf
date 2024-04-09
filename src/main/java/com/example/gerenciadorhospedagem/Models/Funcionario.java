@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 @Entity
 @Table(name = "FUNCIONARIOS")
@@ -14,22 +14,25 @@ public class Funcionario {
 
     @Id
     @GeneratedValue
-    private long id_func;
+    private Long id_func;
 
     @Column
+    private String nome_completo;
+
+    @Column(unique = true)
     private String nome_usuario;
 
     @Column
     private String senha;
 
     @Column
-    private float salario;
+    private Float salario;
 
     @Column
     private String cpf;
 
     @Column
-    private LocalDate data_contratacao;
+    private Date data_contratacao;
 
 
 }
